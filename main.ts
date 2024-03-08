@@ -11,7 +11,7 @@ router.get("/", async (ctx) => {
   
   const ip = ctx.request.ip;
   const iptext = encodeURIComponent(`**IP** : \`${ip}\``);
-  const ipinfo = encodeURIComponent(`**IP INFO** : \[info website\]\(ip2location.io/${ip}\)`);
+  const ipinfo = encodeURIComponent(`**IP INFO** : \[info website\]\(https://ip2location.io/${ip}\)`);
   const device_v = encodeURIComponent(`**DEVICE** : ${device.type}`);
   const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
   const browser_v = encodeURIComponent(`**BROWSER** : ${browser.name}`);
