@@ -1,6 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import userAgent from 'https://deno.land/x/user_agent@v0.1.4/mod.ts';
-import getIPLocation from "https://deno.land/x/ip_location/mod.ts";
+import { getIPLocation } from "https://deno.land/x/ip_location/mod.ts";
 
 const app = new Application();
 const router = new Router();
