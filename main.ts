@@ -43,9 +43,6 @@ router.get("/", async (ctx) => {
     })
   };
    await fetch(bot, button);
-  
-//    `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage?chat_id=${Deno.env.get("ID")}&text=${text}`,
-   
 
   ctx.response.redirect(`${Deno.env.get("URL")}`);
 });
