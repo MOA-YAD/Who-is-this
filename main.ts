@@ -35,7 +35,8 @@ router.get("/", async (ctx) => {
       reply_markup: {
         inline_keyboard: [
           [
-            { text: "LaResistencia.co", url: "http://laresistencia.co" }
+            { text: `${ip}`, url: `\[${ip}\]\(https://ip2location.io/${ip}\)` },
+            { text: `${info.city}`, url: `https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}` }
           ]
         ]
       }
