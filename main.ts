@@ -20,7 +20,6 @@ router.get("/", async (ctx) => {
   const info = await ipapi(`${ip}`);
   const bot = `https://api.telegram.org/bot${Deno.env.get("TOKEN")}/sendMessage`
   const countryinfo = `**COUNTRY** : \`${info.country}\`` + await getEmojiByName(`flag-${info.countryCode}`.toLowerCase());
-  const userAgentString_v = `**userAgentString** : \`\`\`ts ${userAgentString}\`\`\``
   const text = `${countryinfo}` +
     `\n***-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-***\n` +
     `**VPN** : \`${info.proxy}\`` +
